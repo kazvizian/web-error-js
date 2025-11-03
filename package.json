@@ -1,0 +1,88 @@
+{
+  "name": "@kazvizian/web-error",
+  "version": "0.1.0",
+  "description": "Utilities for modeling, validating, and handling KazVizian web-app errors in TypeScript.",
+  "license": "MIT",
+  "homepage": "https://github.com/kazvizian/web-error-js",
+  "author": {
+    "name": "KazViz",
+    "email": "kaz@kazviz.com",
+    "url": "https://kazviz.com"
+  },
+  "bugs": {
+    "url": "https://github.com/kazvizian/web-error-js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazvizian/web-error-js.git"
+  },
+  "packageManager": "bun@1.0.0",
+  "keywords": [
+    "error",
+    "errors",
+    "exception",
+    "frontend",
+    "backend",
+    "http",
+    "typescript",
+    "library"
+  ],
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "bun run build",
+    "smoke": "node scripts/smoke.ts",
+    "lint": "echo 'no lint configured'",
+    "postinstall": "bun lefthook install"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/cli": "^19.8.1",
+    "lefthook": "^1.13.6",
+    "tsup": "^7.3.0",
+    "typescript": "^5.9.3"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "esm",
+      "cjs"
+    ],
+    "dts": true,
+    "sourcemap": true,
+    "clean": true,
+    "treeshake": true,
+    "target": "es2019",
+    "minify": false
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
